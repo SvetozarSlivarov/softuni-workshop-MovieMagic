@@ -9,11 +9,9 @@ movieController.get('/create', (req, res) => {
 movieController.get('/:movieId/details', (req, res) => {
     const movieId = req.params.movieId;
 
-    console.log(movieId);
     const movie = movieService.findMovie(movieId);
-    console.log(movie);
 
-    res.render('details');
+    res.render('details', {movie});
 })
 
 export default movieController;
