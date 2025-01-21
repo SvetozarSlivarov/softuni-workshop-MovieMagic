@@ -7,12 +7,11 @@ movieController.get('/create', (req, res) => {
     res.render('create');
 });
 movieController.post('/create', (req, res) => {
-    console.log('POST MOVIE');
+    const newMovie = req.body;
 
-    console.log(req.body);
+    movieService.create(newMovie);
 
-    res.end();
-
+    res.redirect('/');
 })
 movieController.get('/:movieId/details', (req, res) => {
     const movieId = req.params.movieId;
