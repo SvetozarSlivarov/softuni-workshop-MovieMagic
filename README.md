@@ -125,14 +125,8 @@ The project uses Handlebars for templating. Dynamic parts of the HTML are identi
 ## Search Functionality
 
 The search page is accessible via the `/search` route. It allows users to filter movies by:
-- **Title** (case-insensitive, partial match)
+- **Title**
 - **Genre**
 - **Year**
 
 If no search criteria are entered, all movies are displayed.
-
----
-
-## License
-
-© SoftUni – https://softuni.org. Unauthorized copy, reproduction, or use is not permitted.
