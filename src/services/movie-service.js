@@ -3,20 +3,20 @@ import { v4 as uuid} from 'uuid'
 import Movie from '../models/Movie.js';
 
 export default {
-    async getAll(filter = {}) {
-        let result = await Movie.find({});
+    getAll(filter = {}) {
+        let query = Movie.find({});
 
-        // if (filter.search) {
-        //     result = result.filter(movie => movie.title.toLowerCase().includes(filter.search.toLowerCase()))
-        // }
-        // if(filter.genre) {
-        //     result = result.filter(movie => movie.genre.toLowerCase() === filter.genre.toLowerCase());
-        // }
-        // if(filter.year) {
-        //     result = result.filter(movie => movie.year == filter.year);
-        // }
+        if (filter.search) {
+            query = query.find({title: filter.search});
+        }
+        if(filter.genre) {
+            query = query.find({genre: filter.genre});
+        }
+        if(filter.year) {
+            query = query.find({year: Number(filter.year)});
+        }
         
-        return result;
+        return query;
     },
     getOne(movieId){
         const result = Movie.findById(movieId);
