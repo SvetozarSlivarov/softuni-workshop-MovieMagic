@@ -17,7 +17,7 @@ export default {
         return query;
     },
     getOne(movieId){
-        const result = Movie.findById(movieId);
+        const result = Movie.findById(movieId).populate('casts');
         return result;
     },
     create(movieData) {
