@@ -10,8 +10,8 @@ const port = 5000;
 
 try{
 
-    const defaultUrl = 'mongodb://127.0.0.1:27017/magic-movies';
-    await mongoose.connect(process.env.DATABASE_URL ?? defaultUrl);
+    const defaultUri = 'mongodb://127.0.0.1:27017/magic-movies';
+    await mongoose.connect(process.env.DATABASE_URI ?? defaultUri);
 
     console.log('DB Connected Successfuly!');
 } catch (err){

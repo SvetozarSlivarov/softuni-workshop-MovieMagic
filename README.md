@@ -1,132 +1,129 @@
-# Movie Magic
+# 🎬 MovieMagic
 
-**Movie Magic** is a website designed to attract movie enthusiasts. The platform aims to create an engaging and interactive experience for movie fans, allowing them to explore, search, and learn about their favorite movies.
+MovieMagic is a web-based application for managing film productions and their cast. Developed with **Node.js, Express.js, MongoDB, and Mongoose**, the platform provides efficient organization, searching, and updating of film-related data through a structured and scalable architecture.
 
----
+## 📌 Key Features
 
-## Table of Contents
-- [Installation](#installation)
-- [Features](#features)
-- [Project Structure](#project-structure)
-- [Routes](#routes)
-- [Movie Model](#movie-model)
-- [Templates](#templates)
-- [Search Functionality](#search-functionality)
-- [License](#license)
+- **🔍 Advanced Movie Search** – Filter movies by title, genre, and release year.
+- **🎬 Movie Creation** – Add new movies to the database with structured data validation.
+- **🎭 Cast Management** – Add new actors to the database with detailed metadata.
+- **📋 Detailed Movie Information** – View all details, including cast, genre, and production year.
+- **🔗 Actor Assignment to Films** – Assign roles and characters to actors within specific films.
 
 ---
 
-## Installation
+## 🚀 Installation & Configuration
 
-### 1. Initialize the Project
-Run the following command to set up a new Node.js project:
-```bash
-npm init
+### 1️⃣ Clone the Repository
+```sh
+git clone <repository-url>
+cd softuni-workshop-MovieMagic
 ```
 
-### 2. Install Dependencies
-Install the necessary packages:
-```bash
-npm install express express-handlebars path
+### 2️⃣ Install Dependencies
+```sh
+npm install
 ```
+
+### 3️⃣ Environment Configuration
+Create a `.env` file in the root directory with the following content:
+```env
+DATABASE_URI=mongodb://localhost:27017/moviemagic
+```
+
+📌 **Important**: Ensure MongoDB is running locally or via a cloud service such as **MongoDB Atlas**.
+
+### 4️⃣ Start the Server
+```sh
+npm start
+```
+
+The application will be accessible at:
+🔗 [http://localhost:5000](http://localhost:5000)
 
 ---
 
-## Features
+## 📂 Project Structure
 
-- **Homepage:** Displays all movies stored in the database.
-- **About Page:** Provides information about the platform.
-- **Create Movie:** A form to add new movies to the database.
-- **Movie Details:** Displays detailed information about a selected movie.
-- **Search:** Allows users to filter movies by title, genre, or year.
-- **404 Page:** Displays a custom error page for undefined routes.
-
----
-
-## Project Structure
-```
+```plaintext
 softuni-workshop-MovieMagic/
-├── src/
-│   ├── controllers/
+│-- src/
+│   │-- controllers/
 │   │   ├── home-controller.js
 │   │   ├── movie-controller.js
-│   ├── helpers/
+│   │-- helpers/
 │   │   ├── rating.js
-│   ├── public/
-│   │   ├── css/
-│   │   ├── img/
-│   ├── services/
+│   │-- models/
+│   │   ├── Cast.js
+│   │   ├── Movie.js
+│   │-- services/
+│   │   ├── cast-service.js
 │   │   ├── movie-service.js
-│   ├── views/
+│   │-- views/
+│   │   ├── cast/
+│   │   │   ├── create.hbs
 │   │   ├── layouts/
 │   │   │   ├── main.hbs
+│   │   ├── movie/
+│   │   │   ├── attach-cast.hbs
+│   │   │   ├── details.hbs
 │   │   ├── partials/
 │   │   │   ├── movie.hbs
 │   │   ├── 404.hbs
 │   │   ├── about.hbs
 │   │   ├── create.hbs
-│   │   ├── details.hbs
 │   │   ├── home.hbs
 │   │   ├── search.hbs
-│   ├── index.js
-│   ├── movies.js
-│   ├── routes.js
-├── .gitignore
-├── package-lock.json
-├── package.json
-├── README.md
+│-- public/
+│   │-- css/
+│   │-- img/
+│-- index.js
+│-- routes.js
 ```
 
 ---
 
-## Routes
+## 📖 API Endpoints
 
-| Route          | Description                                     |
-|----------------|-------------------------------------------------|
-| `/`            | Displays all movies on the main page.           |
-| `/about`       | Renders the about page.                        |
-| `/create`      | Renders the form to create a new movie.         |
-| `/details/:id` | Displays details of a specific movie.           |
-| `/search`      | Filters movies by title, genre, or year.        |
-| Any other      | Displays a 404 Not Found page.                 |
+### 🎬 Movie Endpoints
 
----
+| Method  | Endpoint | Description |
+|--------|---------|-------------|
+| **GET** | `/movies/search` | Retrieves movies based on filters |
+| **GET** | `/movies/create` | Serves the movie creation form |
+| **POST** | `/movies/create` | Adds a new movie to the database |
+| **GET** | `/movies/:movieId/details` | Retrieves detailed information about a specific movie |
+| **GET** | `/movies/:movieId/attach-cast` | Serves the actor attachment form |
+| **POST** | `/movies/:movieId/attach-cast` | Assigns an actor to a movie |
 
-## Movie Model
+### 🎭 Cast Endpoints
 
-Each movie in the database has the following properties:
-
-| Property      | Type    |
-|---------------|---------|
-| `id`          | Number  |
-| `title`       | String  |
-| `category`    | String  |
-| `genre`       | String  |
-| `director`    | String  |
-| `year`        | Number  |
-| `imageURL`    | String  |
-| `rating`      | Number  |
-| `description` | String  |
+| Method  | Endpoint | Description |
+|--------|---------|-------------|
+| **GET** | `/cast` | Retrieves all actors |
+| **GET** | `/cast/create` | Serves the actor creation form |
+| **POST** | `/cast/create` | Adds a new actor to the database |
 
 ---
 
-## Templates
-The project uses Handlebars for templating. Dynamic parts of the HTML are identified and rendered using Handlebars syntax.
+## 🛠️ Technology Stack
 
-### Pages:
-- **Main Page:** Displays all movies.
-- **About Page:** Information about Movie Magic.
-- **Create Page:** Form to add new movies.
-- **Details Page:** Information about a specific movie.
-- **Not Found Page:** Custom 404 error page.
+- **Node.js** – JavaScript runtime environment
+- **Express.js** – Web framework for Node.js
+- **MongoDB + Mongoose** – NoSQL database and ORM for data management
+- **Handlebars (hbs)** – Templating engine for dynamic content rendering
+- **dotenv** – Environment variable management
 
 ---
 
-## Search Functionality
+## 📌 Future Enhancements
 
-The search page is accessible via the `/search` route. It allows users to filter movies by:
-- **Title**
-- **Genre**
-- **Year**
+- ✅ **User authentication and role-based access control** (Upcoming)
+- 🔄 **Enhanced search functionality** (Filters, sorting, pagination)
+---
 
-If no search criteria are entered, all movies are displayed.
+## 📄 License
+
+This project is licensed under the **MIT License**.
+
+---
