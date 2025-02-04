@@ -9,8 +9,9 @@ const app = express();
 const port = 5000;
 
 try{
-    const uri = 'mongodb://127.0.0.1:27017/magic-movies';
-    await mongoose.connect(uri);
+
+    const defaultUrl = 'mongodb://127.0.0.1:27017/magic-movies';
+    await mongoose.connect(process.env.DATABASE_URL ?? defaultUrl);
 
     console.log('DB Connected Successfuly!');
 } catch (err){
