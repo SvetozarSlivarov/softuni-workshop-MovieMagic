@@ -11,7 +11,7 @@ authController.post('/register', async (req, res) => {
 
     await authService.register(userData);
 
-    res.redirect('/login');
+    res.redirect('/auth/login');
 });
 
 authController.get('/login', (req, res) =>{ 
@@ -28,8 +28,12 @@ authController.post('/login', async (req, res) => {
     } catch ( err ) {
         console.log(err.message);
         res.redirect('/404')
-    };
-
-    
+    };    
 });
+authController.get('/logout', (req, res) =>{ 
+    res.clearCookie('auth');
+
+    res.redirect('/');
+});
+
 export default authController;
