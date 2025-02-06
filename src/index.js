@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser';
 
 import routes from './routes.js'
 import showRatingHelper from './helpers/rating.js';
+import { authMiddleware } from './middlewares/auth-middleware.js';
 
 const app = express();
 const port = 5000;
@@ -37,6 +38,7 @@ app.use('/static',express.static('src/public'));
 app.use(express.urlencoded({extended: false}));
 
 app.use(cookieParser());
+app.use(authMiddleware);
 
 app.use(routes);
 
