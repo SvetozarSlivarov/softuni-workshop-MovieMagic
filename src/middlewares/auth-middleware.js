@@ -15,9 +15,11 @@ export const authMiddleware = (req, res, next) => {
         const decodedToken = jwt.verify(token, SECRET);
         //Attach decoded token to request
         req.user = decodedToken;
+        //Authomatic send to template user info
+        res.locals.user = decodedToken;
 
         next();
-    } catch(err) {
+    } catch(err) { 
         //TODO: Invalid token
         res.clearCookie('auth');
         res.redirect('/auth/login');
