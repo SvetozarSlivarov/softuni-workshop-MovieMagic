@@ -37,4 +37,7 @@ export default {
 
         return movie;
     },
+    delete(movieId) {
+        return Movie.findByIdAndDelete(movieId);
+    }
 }
