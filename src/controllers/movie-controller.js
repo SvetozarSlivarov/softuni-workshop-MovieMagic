@@ -24,10 +24,12 @@ movieController.post('/create', async (req, res) => {
 movieController.get('/:movieId/details',async (req, res) => {
     const movieId = req.params.movieId;
     const movie = await movieService.getOne(movieId);
+    const isCreator = movie.creator && movie.creator.toString() === req.user?.id;
+    
     //console.log(req.user); see user token
     // console.log(movie);
 
-    res.render('movie/details', {movie});
+    res.render('movie/details', {movie, isCreator});
 })
 
 movieController.get('/:movieId/attach-cast', async (req, res) => {
