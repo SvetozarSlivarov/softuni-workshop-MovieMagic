@@ -6,7 +6,7 @@ const userSchema = new Schema({
         type: String,
         required: true,
         unique: true, // This is not validator, it's index
-        match: /\@[a-zA-Z].[a-zA-Z]$/,
+        match: /\@[a-zA-Z]+.[a-zA-Z]+$/,
         lowercase: true,
         minLength: 10,
     },
