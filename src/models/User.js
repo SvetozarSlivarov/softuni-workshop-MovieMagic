@@ -4,14 +4,17 @@ import bcrypt from 'bcrypt';
 const userSchema = new Schema({
     email: {
         type: String,
+        required: true,
         unique: true, // This is not validator, it's index
         match: /\@[a-zA-Z].[a-zA-Z]$/,
+        lowercase: true,
         minLength: 10,
     },
     password: {
         type: String,
         maatch: /\w+/,
-        minLength: 6,
+        trim: true,
+        minLength: [6, 'Password should be at least 6 characters!'],
     },
 });
 userSchema.virtual('rePassword')
