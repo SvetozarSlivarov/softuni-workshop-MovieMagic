@@ -17,7 +17,7 @@ authController.post('/register', async (req, res) => {
 
 
 
-        return res.render('auth/register', {error });
+        return res.render('auth/register', {error});
     }
 
     res.redirect('/auth/login');
@@ -36,7 +36,7 @@ authController.post('/login', async (req, res) => {
         res.redirect('/');
     } catch ( err ) {
         console.log(err.message);
-        res.redirect('/404')
+        return res.render('auth/login', {error: getErrorMessage(err)})
     };    
 });
 authController.get('/logout', (req, res) =>{ 

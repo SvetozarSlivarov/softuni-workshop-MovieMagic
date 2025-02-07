@@ -22,13 +22,13 @@ export default {
          //Check user exists
         const user = await User.findOne({ email});
         if(!user){
-            throw new Error('Invalid email!');
+            throw new Error('Invalid email or password!');
         }
 
          //Check password is correct
         const isValid = await bcrypt.compare(password, user.password);
         if(!isValid){
-            throw new Error('Invalid password!');
+            throw new Error('Invalid email or password!');
         }
          //Generate token
         const payload = {
