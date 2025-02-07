@@ -14,6 +14,12 @@ const userSchema = new Schema({
         minLength: 6,
     },
 });
+userSchema.virtual('rePassword')
+    .set(function(rePassword) {
+        if(rePassword !== this.password) {
+            throw new Error('Passwors missmatch!');
+        }
+    });
 
 userSchema.pre('save', async function() {
     this.password = await bcrypt.hash(this.password, 10);
