@@ -111,6 +111,8 @@ softuni-workshop-MovieMagic/
 | ------ | --------------- | ----------------------------- |
 | POST   | /auth/login     | User login authentication     |
 | POST   | /auth/register  | User registration             |
+| GET    | /auth/register   | Serves the user creation form     |
+| GET     | /auth/login     |  Serves the login page |
 
 ## 🛠️ Technology Stack
 - **Node.js** – JavaScript runtime environment
@@ -118,8 +120,6 @@ softuni-workshop-MovieMagic/
 - **MongoDB + Mongoose** – NoSQL database and ORM for data management
 - **Handlebars (hbs)** – Templating engine for dynamic content rendering
 - **dotenv** – Environment variable management
-- **Middleware** – Authentication and temporary data management
-- **Model Validation** – Data integrity enforcement in MongoDB models
 
 ## 📌 Future Enhancements
 - ✅ User authentication and role-based access control (Implemented)
