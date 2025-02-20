@@ -33,6 +33,11 @@ JWT_SECRET=$2b$10$bzBTtp5yBLCQP13KhySHTWKDqaNbLn.K4qNM.XxSshth4ljwjV1yC
 ```
 📌 **Important:** Ensure MongoDB is running locally or via a cloud service such as MongoDB Atlas.
 
+It is recommended to change the content of JWT_SECRET for security purposes.
+
+
+
+
 ### 4️⃣ Start the Server
 ```bash
 npm start
